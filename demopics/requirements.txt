@@ -1,10 +1,11 @@
 streamlit
 langchain
-langchain-groq
-langchain-huggingface
 langchain-community
 langchain-classic
+langchain-groq
+langchain-huggingface
 faiss-cpu
 sentence-transformers
 PyPDF2
 python-dotenv
+pillow

@@ -5,7 +5,6 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_classic.memory import ConversationBufferMemory
-from htmlTemplates import css,bot_template,user_template
 from langchain_classic.chains import ConversationalRetrievalChain # allows us to chat with our context and hold memory of it
 from langchain_groq import ChatGroq
 from PIL import Image
