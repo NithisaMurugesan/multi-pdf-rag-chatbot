@@ -1,42 +1,43 @@
-# 📚 Multi-PDF Conversational AI Assistant
+# 📚 Multi-Document Conversational AI Assistant
 
-A Retrieval-Augmented Generation (RAG) application that enables users to upload multiple PDF documents and interact with them through natural language conversations.
+An AI-powered Retrieval-Augmented Generation (RAG) application that enables users to upload and interact with multiple document formats, including PDF, CSV, and Excel files, through natural language conversations.
 
-The application extracts text from uploaded PDFs, converts the content into semantic embeddings, stores them in a FAISS vector database, retrieves relevant context, and generates accurate responses using Llama 3 via Groq.
+The application extracts content from uploaded documents, converts it into semantic vector embeddings, stores them in a FAISS vector database, retrieves the most relevant context, and generates accurate, context-aware responses using Llama 3 through Groq.
 
 ---
 
 ## 🚀 Features
 
-* Upload and process multiple PDF documents
-* Conversational question answering over PDFs
+* Upload and analyze multiple PDF, CSV, and Excel files
+* Conversational question answering over uploaded documents
 * Retrieval-Augmented Generation (RAG)
 * Semantic search using vector embeddings
-* Conversation memory for contextual responses
-* Fast inference using Llama 3 on Groq
-* Interactive Streamlit web interface
 * Multi-document knowledge retrieval
+* Conversational memory for contextual interactions
+* Fast inference using Llama 3 via Groq
+* Interactive Streamlit web application
+* Supports structured and unstructured data sources
 
 ---
 
 ## 🏗️ Architecture
 
-PDF Documents
+Documents (PDF / CSV / Excel)
 ↓
-PyPDF2 Text Extraction
+Data Extraction
 ↓
 Text Chunking
 ↓
 Hugging Face Embeddings
 (all-MiniLM-L6-v2)
 ↓
-FAISS Vector Store
+FAISS Vector Database
 ↓
-Retriever
+Semantic Retrieval
 ↓
 Llama 3 (Groq)
 ↓
-Generated Response
+Context-Aware Response
 
 ---
 
@@ -46,51 +47,48 @@ Generated Response
 
 * Python
 
-### AI / Machine Learning
+### AI & LLM Frameworks
 
 * LangChain
 * Retrieval-Augmented Generation (RAG)
-* Hugging Face Embeddings
 * Llama 3 (Groq)
+* Hugging Face Sentence Transformers
 
 ### Vector Database
 
 * FAISS
 
+### Data Processing
+
+* PyPDF2
+* Pandas
+* OpenPyXL
+
 ### Frontend
 
 * Streamlit
 
-### Document Processing
+### Supporting Libraries
 
-* PyPDF2
-
-### Environment Management
-
-* Python Virtual Environment
+* langchain-groq
+* langchain-huggingface
+* langchain-community
+* sentence-transformers
 * python-dotenv
 
 ---
 
-## 📦 Installation
+## 💡 How It Works
 
-Clone the repository:
-
-git clone https://github.com/NithisaMurugesan/multi-pdf-rag-chatbot.git
-
-cd multi-pdf-rag-chatbot
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Create a .env file:
-
-GROQ_API_KEY=your_groq_api_key
-
-Run the application:
-
-streamlit run app.py
+1. Users upload PDF, CSV, or Excel documents.
+2. Content is extracted and converted into text.
+3. Documents are split into manageable chunks.
+4. Semantic embeddings are generated using all-MiniLM-L6-v2.
+5. Embeddings are stored in a FAISS vector database.
+6. User queries are embedded and matched against document vectors.
+7. Relevant document chunks are retrieved.
+8. Retrieved context is provided to Llama 3 via Groq.
+9. The model generates accurate responses grounded in the uploaded documents.
 
 ---
 
@@ -111,19 +109,9 @@ https://multi-pdf-rag-chatbot-nrrjelzwcxfdeopsw6ykok.streamlit.app/
   <img src="demopics/3.png" width="85%">
 </p>
 
----
-
-## 💡 How It Works
-
-1. Upload one or more PDF documents.
-2. Text is extracted using PyPDF2.
-3. Documents are split into manageable chunks.
-4. Chunks are converted into embeddings using all-MiniLM-L6-v2.
-5. Embeddings are stored in a FAISS vector database.
-6. User questions are converted into embeddings.
-7. Relevant document chunks are retrieved using similarity search.
-8. Retrieved context is sent to Llama 3 through Groq.
-9. The model generates context-aware answers.
+<p align="center">
+  <img src="demopics/4.png" width="85%">
+</p>
 
 ---
 
@@ -133,12 +121,24 @@ https://multi-pdf-rag-chatbot-nrrjelzwcxfdeopsw6ykok.streamlit.app/
 * Retrieval-Augmented Generation (RAG)
 * Vector Databases
 * Semantic Search
-* Prompt Engineering
+* Embedding Models
 * Conversational AI
 * LangChain Development
 * Streamlit Deployment
 * API Integration
-* Python Development
+* Data Processing
+* Prompt Engineering
+
+---
+
+## Future Enhancements
+
+* Source citations and document references
+* Chat history export
+* Data visualization for CSV and Excel files
+* Multi-user support
+* Cloud deployment and monitoring
+* Agentic workflows for document analysis
 
 ---
 
@@ -147,3 +147,5 @@ https://multi-pdf-rag-chatbot-nrrjelzwcxfdeopsw6ykok.streamlit.app/
 Nithisa Murugesan
 
 GitHub: https://github.com/NithisaMurugesan
+
+
