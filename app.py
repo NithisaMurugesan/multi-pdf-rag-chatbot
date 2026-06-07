@@ -8,14 +8,43 @@ from langchain_classic.memory import ConversationBufferMemory
 from langchain_classic.chains import ConversationalRetrievalChain # allows us to chat with our context and hold memory of it
 from langchain_groq import ChatGroq
 from PIL import Image
+import pandas as pd
+from PyPDF2 import PdfReader
 
-def get_pdf_text(pdf_docs):
+def get_file_text(uploaded_files):
     text = ""
-    for pdf in pdf_docs:
-        pdf_reader = PdfReader(pdf)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    return text 
+
+    for file in uploaded_files:
+
+        if file.name.endswith(".pdf"):
+
+            pdf_reader = PdfReader(file)
+
+            for page in pdf_reader.pages:
+                page_text = page.extract_text()
+
+                if page_text:
+                    text += page_text + "\n"
+
+        elif file.name.endswith(".csv"):
+
+            df = pd.read_csv(file)
+
+            text += df.to_string(index=False)
+            text += "\n"
+
+        elif file.name.endswith(".xlsx"):
+
+            excel = pd.ExcelFile(file)
+
+            for sheet in excel.sheet_names:
+
+                df = pd.read_excel(file, sheet_name=sheet)
+
+                text += df.to_string(index=False)
+                text += "\n"
+
+    return text
 
 def get_text_chunks(raw_text):
     text_splitter = CharacterTextSplitter(
@@ -101,11 +130,14 @@ def main():
 
             st.rerun()
 
-        pdf_docs = st.file_uploader("Upload your PDF documents here and click on Process", accept_multiple_files=True)
+        uploaded_files = st.file_uploader("Upload your files here!!",
+                                          type=["pdf", "csv", "xlsx"],
+                                          accept_multiple_files=True
+                                          )
         if st.button("Process"):
             with st.spinner("Processing"):
-                # Get PDF text 
-                raw_text = get_pdf_text(pdf_docs)
+                # Get file text 
+                raw_text = get_file_text(uploaded_files)
                 st.write(raw_text)
 
                 # Get the text chunks
